@@ -1,0 +1,36 @@
+html {
+  font-size: 62.5%;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+header {
+  background-color: #dddddd;
+  background-image: url("../images/rangga-cahya-nugraha-1184974-unsplash.jpg");
+  background-size: cover;
+}
+
+.jumbo-bg-text-holder {
+  background-color: #dddddd;
+  opacity: 0.95;
+}
+
+.jumbotron {
+  height: 260px;
+}
+
+/*# sourceMappingURL=style.css.map */
