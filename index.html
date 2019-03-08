@@ -17,7 +17,7 @@
             <header class="col-12 jumbotron pl-0 pr-0">
                 <div class="jumbo-bg-text-holder m-0 p-2">
                     
-                    <h1>Welcome to the Trainyard</h1>
+                    <h1>The Trainyard</h1>
                     <h3 class="p-1">"Why walk, when you can ride?"</p>
                     <hr class="m-3">
                     <p class="p-1">Find out which train is right for you below, or add your own line to the list.</p>
@@ -31,11 +31,11 @@
                 <div class="card">
                 <h3 class="card-header">Schedule</h3>
 
-                    <div class="card-body">
-                        <table class="table" id="whole-train-table">
+                    <div class="card-body table-responsive">
+                        <table class="table table-striped" id="whole-train-table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Train Num.</th>
+                                    <th scope="col">Train #</th>
                                     <th scope="col">Train Name</th>
                                     <th scope="col">Destination</th>
                                     <th scope="col">Frequency (min.)</th>
@@ -47,6 +47,27 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
+                                    <td class="train-table-item">Train 1</td>
+                                    <td class="train-table-item">Albuqurque</td>
+                                    <td class="train-table-item">69</td>
+                                    <td class="train-table-item">04:20</td>
+                                    <td class="train-table-item">15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
+                                    <td class="train-table-item"></td>
                                 </tr>
                             </tbody>
 
@@ -57,8 +78,44 @@
             </div>
         </div>
 
+        <br>
+
         <div class="row input-div-row">
             <div class="col-12 input-form-div">
+                <div class="card">
+                    <h3 class="card-header">Add a Train</h3>
+                    <div class="form-holder">
+                        <form class="add-train-form p-2">
+
+                            <div class="form-group pl-2">
+                                <label for="input-train-name" class="mt-2">Train Name</label>
+                                <input type="text" class="form-control train-form-input" id="input-train-name" placeholder="e.g. Red Line">
+                                <p class="half-size">No special characters. 20 character max.</p>
+                            </div>
+
+                            <div class="form-group pl-2">
+                                <label for="input-train-destination" class="mt-2">Destination</label>
+                                <input type="text" class="form-control train-form-input" id="input-train-destination" placeholder="e.g. Albuquerque">
+                                <p class="half-size">No special characters. 20 character max.</p>
+                            </div>
+
+                            <div class="form-group pl-2">
+                                <label for="input-train-time" class="mt-2">First Train Time</label>
+                                <input type="text" class="form-control train-form-input" id="input-train-time" placeholder="e.g. 24:00">
+                                <p class="half-size">Format: HH:mm (24 hour clock)</p>
+                            </div>
+
+                            <div class="form-group pl-2">
+                                <label for="input-train-frequency" class="mt-2">Frequency (minutes)</label>
+                                <input type="text" class="form-control train-form-input" id="input-train-frequency" placeholder="e.g. 30">
+                                <p class="half-size">Whole numbers only</p>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary add-train-button">Add Train</button>
+                        </form>
+                    </div>
+
+                </div>
 
             </div>
         </div>
@@ -84,6 +141,9 @@
   };
   firebase.initializeApp(config);
 </script>
+
+<script type="text/javascript" src="assets/javascript/globals.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 <!-- Scripts Above-->
 </body>
 </html>

@@ -2,8 +2,12 @@ html {
     font-size: 62.5%;
 }
 
-p {
+p, th, td, label {
     font-size: 1.6rem;
+}
+
+label {
+    font-weight: bold;
 }
 
 h3 {
@@ -15,7 +19,11 @@ h2 {
 }
 
 h1 {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
+}
+
+.card {
+    margin-bottom: 24px;
 }
 
 @import 'header';

@@ -2,8 +2,12 @@ html {
   font-size: 62.5%;
 }
 
-p {
+p, th, td, label {
   font-size: 1.6rem;
+}
+
+label {
+  font-weight: bold;
 }
 
 h3 {
@@ -15,7 +19,11 @@ h2 {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
+}
+
+.card {
+  margin-bottom: 24px;
 }
 
 header {
@@ -31,6 +39,19 @@ header {
 
 .jumbotron {
   height: 260px;
+}
+
+.train-form-input {
+  font-size: 1.6rem;
+  width: 30rem;
+}
+
+.half-size {
+  font-size: 1.2rem;
+}
+
+.btn {
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */
