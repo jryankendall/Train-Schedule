@@ -78,22 +78,38 @@ function printTrains() {
 };
 
 database.ref("trains/").on("child_added", function(valueSnap){
+    var timeNow = moment();
+
     var listTName = "<td>" + valueSnap.val().tName + "</td>";
     var listTDest = "<td>" + valueSnap.val().tDest + "</td>";
-    var listTFirstTime = "<td>" + valueSnap.val().tFirstTime + "</td>";
     var listTFrequency = "<td>" +  valueSnap.val().tFrequency + "</td>";
+
+    var firstTimeMoment = moment(valueSnap.val().tFirstTime, "HH:mm");
+    
+    var listTFirstTime = "<td>" + firstTimeMoment.format("HH:mm") + "</td>";
 
     var newRow = $("<tr>");
     var newTHead = $("<th>");
     newTHead.attr("scope","row");
     newTHead.text(lastTrainIndex);
 
+    var nextTrainMin = firstTimeMoment.diff(timeNow, 'minutes');
+   /*  for (var rightTime = false; rightTime == false; null) {
+        if (nextTrainMin > parseInt(valueSnap.val().tFrequency)) {
+            nextTrainMin += parseInt(valueSnap.val().tFrequency);
+        }
+    } */
+    if (nextTrainMin < 0) {
+        nextTrainMin += 1440;
+    }
+    var listNextTime = "<td>" + nextTrainMin + "</td>";
+
     newRow.append(newTHead)
         .append(listTName)
         .append(listTDest)
-        .append(listTFirstTime)
         .append(listTFrequency)
-        .append("<td>69</td>");
+        .append(listTFirstTime)
+        .append(listNextTime);
 
     $("#train-table-body").append(newRow);
     
