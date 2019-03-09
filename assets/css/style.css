@@ -54,4 +54,9 @@ header {
   font-size: 1.6rem;
 }
 
+.red-warning-text {
+  color: #d00;
+  text-decoration: underline;
+}
+
 /*# sourceMappingURL=style.css.map */

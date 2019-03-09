@@ -44,31 +44,8 @@
                                 </tr>
 
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td class="train-table-item">Train 1</td>
-                                    <td class="train-table-item">Albuqurque</td>
-                                    <td class="train-table-item">69</td>
-                                    <td class="train-table-item">04:20</td>
-                                    <td class="train-table-item">15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                    <td class="train-table-item"></td>
-                                </tr>
+                            <tbody id="train-table-body">
+
                             </tbody>
 
                         </table>
@@ -90,25 +67,25 @@
                             <div class="form-group pl-2">
                                 <label for="input-train-name" class="mt-2">Train Name</label>
                                 <input type="text" class="form-control train-form-input" id="input-train-name" placeholder="e.g. Red Line">
-                                <p class="half-size">No special characters. 20 character max.</p>
+                                <p class="half-size" id="name-warning">No special characters. 20 character max.</p>
                             </div>
 
                             <div class="form-group pl-2">
                                 <label for="input-train-destination" class="mt-2">Destination</label>
                                 <input type="text" class="form-control train-form-input" id="input-train-destination" placeholder="e.g. Albuquerque">
-                                <p class="half-size">No special characters. 20 character max.</p>
+                                <p class="half-size" id="destination-warning">No special characters. 20 character max.</p>
                             </div>
 
                             <div class="form-group pl-2">
                                 <label for="input-train-time" class="mt-2">First Train Time</label>
                                 <input type="text" class="form-control train-form-input" id="input-train-time" placeholder="e.g. 24:00">
-                                <p class="half-size">Format: HH:mm (24 hour clock)</p>
+                                <p class="half-size" id="time-warning">Format: HH:mm (24 hour clock)</p>
                             </div>
 
                             <div class="form-group pl-2">
                                 <label for="input-train-frequency" class="mt-2">Frequency (minutes)</label>
                                 <input type="text" class="form-control train-form-input" id="input-train-frequency" placeholder="e.g. 30">
-                                <p class="half-size">Whole numbers between 1 and 999 only</p>
+                                <p class="half-size" id="frequency-warning">Whole numbers between 1 and 999 only</p>
                             </div>
 
                             <button type="submit" class="btn btn-primary add-train-button">Add Train</button>
@@ -126,6 +103,7 @@
 
 <!-- Scripts Below -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
