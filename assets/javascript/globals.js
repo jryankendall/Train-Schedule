@@ -31,8 +31,13 @@ function addTrain() {
         validDest = true;
     };
     if ($("#input-train-time").val().length == 5 && invalidNums.test($("#input-train-time").val()) == false) {
-        firstTrainTime = $("#input-train-time").val().trim();
-        validTime = true;
+        var timeArray = $("#input-train-time").val().split(":");
+        if (timeArray[0] <= 24 && timeArray[0] >= 00) {
+            if (timeArray[1] <= 59 && timeArray[1] >= 00) {
+                firstTrainTime = $("#input-train-time").val().trim();
+                validTime = true;
+            }
+        }
     };
     if ($("#input-train-frequency").val().length <= 3 && validNums.test($("#input-train-frequency").val()) == true && parseInt($("#input-train-frequency").val(), 10) > 0) {
         trainFrequency = parseInt($("#input-train-frequency").val(), 10);
@@ -86,23 +91,32 @@ database.ref("trains/").on("child_added", function(valueSnap){
 
     var firstTimeMoment = moment(valueSnap.val().tFirstTime, "HH:mm");
     
-    var listTFirstTime = "<td>" + firstTimeMoment.format("HH:mm") + "</td>";
+    var listTFirstTime;
 
     var newRow = $("<tr>");
     var newTHead = $("<th>");
     newTHead.attr("scope","row");
     newTHead.text(lastTrainIndex);
 
-    var nextTrainMin = firstTimeMoment.diff(timeNow, 'minutes');
-   /*  for (var rightTime = false; rightTime == false; null) {
-        if (nextTrainMin > parseInt(valueSnap.val().tFrequency)) {
-            nextTrainMin += parseInt(valueSnap.val().tFrequency);
-        }
-    } */
+    var testNumT = 0;
+    //makes variable that is the difference between the "First Arrival Time" and now, in minutes
+    var nextTrainMin = parseInt(firstTimeMoment.diff(timeNow, 'minutes'));
     if (nextTrainMin < 0) {
-        nextTrainMin += 1440;
+        firstTimeMoment.add(1, 'd');
+        nextTrainMin = firstTimeMoment.diff(timeNow, 'minutes');
     }
+    for (var rightTime = false; rightTime == false; testNumT++) {
+        //If time between 'Now' and arrival time is greater than the frequency
+        if (nextTrainMin > parseInt(valueSnap.val().tFrequency)) {
+            //Decrements the arrival time by the frequency amount until it is within now + frequency amount
+            firstTimeMoment.subtract(parseInt(valueSnap.val().tFrequency), 'm');
+            nextTrainMin = parseInt(firstTimeMoment.diff(timeNow, 'm'));
+        } else
+        {rightTime = true;}
+    }
+    
     var listNextTime = "<td>" + nextTrainMin + "</td>";
+    listTFirstTime = "<td>" + firstTimeMoment.format("HH:mm") + "</td>";
 
     newRow.append(newTHead)
         .append(listTName)
