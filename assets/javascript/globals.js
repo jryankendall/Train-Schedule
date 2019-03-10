@@ -74,6 +74,7 @@ function storeTrain() {
         tFrequency : trainFrequency,
         dateAdded : firebase.database.ServerValue.TIMESTAMP
     })
+    $(".train-form-input").val("");
 }
 
 //
