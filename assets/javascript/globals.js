@@ -11,26 +11,29 @@ var validTrainRow;
 var lastTrainIndex = 1;
 
 //
-var invalidNums = /^[0-9]^\072/gi;
-var validNums = /[0-9]/gi;
-var alphaNumerics = /[a-z]/gi;
 
 function addTrain() {
+
+    var invalidNums = /^[0-9]^\072/gi;
+    var validNums = /[0-9]/gi;
+    var alphaNumerics = /[a-z]/gi;
 
     var validName = false;
     var validDest = false;
     var validTime = false;
     var validFreq = false;
 
-    if ($("#input-train-name").val().length < 21 && $("#input-train-name").val().trim().length > 0 && alphaNumerics.test($("#input-train-name").val().trim()) == true) {
+    if ($("#input-train-name").val().length < 21 && $("#input-train-name").val().trim().length > 0 && alphaNumerics.test($("#input-train-name").val().toString().trim()) === true) {
         trainName = $("#input-train-name").val().trim();
         validName = true;
+/*         console.log("Name Checked"); */
     };
-    if ($("#input-train-destination").val().length < 21 && $("#input-train-destination").val().trim().length > 0 && alphaNumerics.test($("#input-train-destination").val().trim()) == true) {
+    if ($("#input-train-destination").val().length < 21 && $("#input-train-destination").val().trim().length > 0 && alphaNumerics.test($("#input-train-destination").val().toString().trim()) === true) {
         trainDestination = $("#input-train-destination").val().trim();
         validDest = true;
+/*         console.log("Destination Checked"); */
     };
-    if ($("#input-train-time").val().length == 5 && invalidNums.test($("#input-train-time").val()) == false) {
+    if ($("#input-train-time").val().length == 5 && invalidNums.test($("#input-train-time").val().toString()) === false) {
         var timeArray = $("#input-train-time").val().split(":");
         if (timeArray[0] <= 24 && timeArray[0] >= 00) {
             if (timeArray[1] <= 59 && timeArray[1] >= 00) {
@@ -38,32 +41,40 @@ function addTrain() {
                 validTime = true;
             }
         }
+/*         console.log("Time Checked"); */
     };
-    if ($("#input-train-frequency").val().length <= 3 && validNums.test($("#input-train-frequency").val()) == true && parseInt($("#input-train-frequency").val(), 10) > 0) {
+    if ($("#input-train-frequency").val().length <= 3 && validNums.test($("#input-train-frequency").val().toString()) === true && parseInt($("#input-train-frequency").val(), 10) > 0) {
         trainFrequency = parseInt($("#input-train-frequency").val(), 10);
         validFreq = true;
+/*         console.log("Frequency Checked"); */
     };
 
-    if (validFreq == false || validName == false || validDest == false || validTime == false) {
-        if (!validName) {
-            $("#name-warning").addClass("red-warning-text");
-        };
-        if (!validDest) {
-            $("#destination-warning").addClass("red-warning-text");
-        };
-        if (!validTime) {
-            $("#time-warning").addClass("red-warning-text");
-        };
-        if (!validFreq) {
-            $("#frequency-warning").addClass("red-warning-text");
-        };
-
+    setTimeout(function() {
         
-        validTrainRow = false;
-    } else
-    {   
-        validTrainRow = true;
-    };
+        if (validFreq == false || validName == false || validDest == false || validTime == false) {
+            if (!validName) {
+                $("#name-warning").addClass("red-warning-text");
+            };
+            if (!validDest) {
+                $("#destination-warning").addClass("red-warning-text");
+            };
+            if (!validTime) {
+                $("#time-warning").addClass("red-warning-text");
+            };
+            if (!validFreq) {
+                $("#frequency-warning").addClass("red-warning-text");
+            };
+
+/*             console.log("" + validName + validDest + validTime + validFreq); */
+
+            
+            validTrainRow = false;
+        } else
+        {   
+            validTrainRow = true;
+        };
+    }, 100);
+
 };
 
 function storeTrain() {
